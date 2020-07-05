@@ -22,6 +22,25 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+	// Uncomment this line to enable xml data format
+//	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.1'
+
+	// HATEOAS and Validations dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Swagger dependencies
+	compile 'io.springfox:springfox-swagger2:2.10.5'
+	compile 'io.springfox:springfox-swagger-ui:2.10.5'
+	compile 'io.springfox:springfox-spring-webmvc:2.10.5'
+
+	// Actuator dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.data:spring-data-rest-hal-browser'
+
+	// Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 test {
