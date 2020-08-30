@@ -1,4 +1,4 @@
-package com.manikanta.springboot.versioning;
+package com.manikanta.springboot.restfulwebservices.versioning;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

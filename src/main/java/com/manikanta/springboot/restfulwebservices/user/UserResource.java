@@ -1,46 +1,37 @@
-package com.manikanta.springboot.user;
+package com.manikanta.springboot.restfulwebservices.user;
 
-import com.manikanta.springboot.exception.UserNotFoundException;
+import com.manikanta.springboot.restfulwebservices.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
-/**
- * Created by Manikanta Tummalapenta on 06/07/20
- */
 @RestController
-public class UserJPAResource {
+public class UserResource {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserDaoService userDaoService;
 
-    @GetMapping("/jpa/users")
+    @GetMapping("/users")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userDaoService.findAll();
     }
 
-    @GetMapping("/jpa/users/{id}")
+    @GetMapping("/users/{id}")
     public EntityModel<User> getUser(@PathVariable Integer id) {
-        Optional<User> user = userRepository.findById(id);
-        if (!user.isPresent()) {
+        User user = userDaoService.findById(id);
+        if (null == user) {
             throw new UserNotFoundException("User not found !!");
         }
 
         // HATEOAS
-        EntityModel<User> resource = EntityModel.of(user.get());
+        EntityModel<User> resource = EntityModel.of(user);
         WebMvcLinkBuilder linkTo =
                 WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllUsers());
 
@@ -49,9 +40,9 @@ public class UserJPAResource {
         return resource;
     }
 
-    @PostMapping("/jpa/users")
+    @PostMapping("/users")
     public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
-        User newUser = userRepository.save(user);
+        User newUser = userDaoService.save(user);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -61,8 +52,13 @@ public class UserJPAResource {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/jpa/users/{id}")
-    public void deleteUser(@PathVariable Integer id) {
-        userRepository.deleteById(id);
+    @DeleteMapping("/users/{id}")
+    public User deleteUser(@PathVariable Integer id) {
+        User user = userDaoService.deleteById(id);
+        if (null == user) {
+            throw new UserNotFoundException("User not found !!");
+        }
+
+        return user;
     }
 }

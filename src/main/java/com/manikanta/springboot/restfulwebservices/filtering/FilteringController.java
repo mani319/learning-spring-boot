@@ -1,4 +1,4 @@
-package com.manikanta.springboot.filtering;
+package com.manikanta.springboot.restfulwebservices.filtering;
 
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;

@@ -1,4 +1,4 @@
-package com.manikanta.springboot.greeting;
+package com.manikanta.springboot.restfulwebservices.greeting;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

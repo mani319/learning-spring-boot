@@ -1,4 +1,4 @@
-package com.manikanta.springboot.exception;
+package com.manikanta.springboot.restfulwebservices.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

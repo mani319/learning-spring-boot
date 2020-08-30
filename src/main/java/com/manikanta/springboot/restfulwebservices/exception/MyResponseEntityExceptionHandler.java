@@ -1,4 +1,4 @@
-package com.manikanta.springboot.exception;
+package com.manikanta.springboot.restfulwebservices.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

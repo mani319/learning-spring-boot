@@ -1,4 +1,4 @@
-package com.manikanta.springboot.versioning;
+package com.manikanta.springboot.restfulwebservices.versioning;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

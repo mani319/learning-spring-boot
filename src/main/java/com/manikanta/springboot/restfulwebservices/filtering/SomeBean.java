@@ -1,7 +1,6 @@
-package com.manikanta.springboot.filtering;
+package com.manikanta.springboot.restfulwebservices.filtering;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

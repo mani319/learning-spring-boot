@@ -1,4 +1,4 @@
-package com.manikanta.springboot.user;
+package com.manikanta.springboot.restfulwebservices.user;
 
 import org.springframework.stereotype.Component;
 
